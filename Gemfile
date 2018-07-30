@@ -14,6 +14,12 @@ gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
+gem 'faker'
+
+gem 'will_paginate'
+
+gem 'bootstrap-will_paginate'
+
 gem 'jquery-rails'
 
 gem "select2-rails"
