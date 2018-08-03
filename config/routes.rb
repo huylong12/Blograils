@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'testsuites/index'
+
   get 'users/new'
 
   root 'static_pages#home'
@@ -12,4 +14,6 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   resources :users
+
+  resources :testsuites
 end

@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+users = User.order(:created_at).take(6)
+11.times do
+  name = Faker::Lorem.sentence(5)
+  users.each { |user| user.testsuite.create!(name: name) }
+end

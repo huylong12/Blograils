@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @testsuite = @user.testsuites.paginate(page: params[:page])
   	# debugger
   end
 

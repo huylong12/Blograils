@@ -96,3 +96,37 @@ input {
   border: 1px solid  #bbb;
   color: red;
 }
+
+.navbar {
+  background-color: lightblue;
+}
+
+
+.glyphicon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.list-inline > li {
+  float:left;
+  margin-left: 20px;
+}
+.glyphicon-play:before {
+    content: "\e072";
+    margin-left: 20px;
+}
+.glyphicon-export:before {
+    content: "\e170";
+    margin-left: 24px;
+}
+.glyphicon-duplicate:before {
+    content: "\e224";
+    margin-left: 47px;
+}
+.glyphicon-trash:before {
+    content: "\e020";
+    margin-left: 47px;
+}
+.glyphicon-edit:before {
+    content: "\e065";
+    margin-left: 24px;
+}
