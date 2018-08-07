@@ -13,8 +13,11 @@ gem 'rails-controller-testing'
 gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-
+gem 'faker'
 gem 'jquery-rails'
+gem 'will_paginate'
+
+gem 'nokogiri'
 
 gem "select2-rails"
 
