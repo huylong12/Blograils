@@ -62,3 +62,71 @@ footer {
   	margin-left: 15px;
   }
 }
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+/* error message */
+#error_explanation {
+  background-color: white;
+  border: 1px solid  #bbb;
+  color: red;
+}
+
+.navbar {
+  background-color: lightblue;
+}
+
+
+.glyphicon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.list-inline > li {
+  float:left;
+  margin-left: 20px;
+}
+.glyphicon-play:before {
+    content: "\e072";
+    margin-left: 20px;
+}
+.glyphicon-export:before {
+    content: "\e170";
+    margin-left: 24px;
+}
+.glyphicon-duplicate:before {
+    content: "\e224";
+    margin-left: 47px;
+}
+.glyphicon-trash:before {
+    content: "\e020";
+    margin-left: 47px;
+}
+.glyphicon-edit:before {
+    content: "\e065";
+    margin-left: 24px;
+}

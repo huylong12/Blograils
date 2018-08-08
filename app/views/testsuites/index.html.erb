@@ -1,0 +1,41 @@
+<h1>Testsuites#index</h1>
+<div class="container">
+	<div>
+		  <%= link_to '', new_testsuite_path, class: "glyphicon glyphicon-plus" %>
+	</div>
+<div class="row">
+  <div class="col-xs-12 col-md-8">Web Test Suites</div>
+  <div class="col-xs-6 col-md-4">
+  	<ul class="list-inline">
+  		<li>Edit</li>
+  		<li>Run</li>
+  		<li>Export</li>
+  		<li>Duplicate</li>
+  		<li>Delete</li>
+  	</ul>
+  </div>
+</div>
+
+<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+<div class="row">
+      <% @testsuites.each do |test| %>
+  <div class="col-xs-12 col-md-8">
+    <ul class="list-inline">
+  		<li class="glyphicon glyphicon-file"></li>
+  		<a href=""><li><%= test["name"] %></li></a>
+  	</ul>
+  </div>
+  <div class="col-xs-6 col-md-4">
+  	<ul class="list-inline">
+			<a href=""><li class="glyphicon glyphicon-edit"></li></a>
+  		<a href=""><li class="glyphicon glyphicon-play"></li></a>
+  		<a href=""><li class="glyphicon glyphicon-export"></li></a>
+  		<a href=""><li class="glyphicon glyphicon-duplicate"></li></a>
+  		<%= link_to '', testsuite_path(id: test["id"]), method: :delete, data: { confirm: 'Are you sure?' }, remote: true,  class: "glyphicon glyphicon-trash" %>
+      
+  	</ul>
+  </div>
+    <% end %>
+    
+</div>
+</div>

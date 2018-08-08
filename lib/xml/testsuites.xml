@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <action>
+    <id>1</id>
+    <name>AC_ENTER</name>
+  </action>
+  <action>
+    <id>2</id>
+    <name>đá</name>
+  </action>
+  <action>
+    <id>2</id>
+    <name>đá</name>
+  </action>
+</testsuites>
