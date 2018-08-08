@@ -1,7 +1,7 @@
 <h1>Testsuites#index</h1>
 <div class="container">
 	<div>
-		<button class="glyphicon glyphicon-plus"></button>
+		  <%= link_to '', new_testsuite_path, class: "glyphicon glyphicon-plus" %>
 	</div>
 <div class="row">
   <div class="col-xs-12 col-md-8">Web Test Suites</div>
@@ -31,7 +31,8 @@
   		<a href=""><li class="glyphicon glyphicon-play"></li></a>
   		<a href=""><li class="glyphicon glyphicon-export"></li></a>
   		<a href=""><li class="glyphicon glyphicon-duplicate"></li></a>
-  		<a href=""><li class="glyphicon glyphicon-trash"></li></a>
+  		<%= link_to '', testsuite_path(id: test["id"]), method: :delete, data: { confirm: 'Are you sure?' }, remote: true,  class: "glyphicon glyphicon-trash" %>
+      
   	</ul>
   </div>
     <% end %>

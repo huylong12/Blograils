@@ -5,15 +5,11 @@
     <name>AC_ENTER</name>
   </action>
   <action>
-    <id>1</id>
-    <name>ffgfd</name>
-  </action>
-  <action>
-    <id/>
-    <name>fdsfd</name>
+    <id>2</id>
+    <name>đá</name>
   </action>
   <action>
     <id>2</id>
-    <name>gdf</name>
+    <name>đá</name>
   </action>
 </testsuites>

@@ -1,7 +1,7 @@
 class TestsuitesController < ApplicationController
 	before_action :read_testsuites
-
-  def index
+	before_action :find_testsuit, only: %i(destroy)
+	def index
 	end
 
 	def new
@@ -11,22 +11,22 @@ class TestsuitesController < ApplicationController
 
 	def create
 		# if params[:testsuites][:name].present?
-			create_test = {}
+		create_test = {}
 
-	 	 	create_test["id"] = (@big_id + 1).to_s
-	 		create_test["name"] = params[:testsuite][:name]
+		create_test["id"] = (@big_id + 1).to_s
+		create_test["name"] = params[:testsuite][:name]
 
-	 		@testsuites << create_test
-	 		write_xml
+		@testsuites << create_test
+		write_xml
 
 	 		# debugger
 	 		# debugger
-	 	  redirect_to testsuites_path
+	 		redirect_to testsuites_path
       # flash[:success] = " Added Successfully!!"
     # else
     # 	flash[:danger] = "failure"
-    		
-	end
+
+  end
 
 
  # puts action.xpath("//TestCase//Actions//Action//Name")
@@ -59,37 +59,66 @@ class TestsuitesController < ApplicationController
 # }.to_xml
 
 # puts xml
+
+
+	def destroy
+		# debugger
+		if @testsuites.delete(@test_suit)
+	    	# debugger
+	    write_xml 
+	    #   flash[:success] = "Deleted TestSuit Complete"
+	    # else
+	    #   flash[:danger] = "Have a few wrong!!"
+	    # end
+	  end
+	  redirect_to testsuites_path
+
+	end
+
+	def read_testsuites
+		@big_id = 1
+
+		doc = File.open("lib/xml/testsuites.xml") { |f| Nokogiri::XML(f)}
+		@testsuites = []
+		doc.xpath('//action').each do |action|
+			object = {}
+			@big_id = @big_id > object["id"].to_i ? @big_id : object["id"].to_i
+			object["id"] = action.at_xpath("id").text
+			object["name"] = action.at_xpath("name").text
+			@testsuites << object
+		end
+	end
+
+	  # def destroy
+	  #   @user = User.find(params[:id])
+	  # end
+  def write_xml
+  	builder = Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
+  		xml.testsuites{
+  			@testsuites.each do |ts|
+  				xml.action{
+  					xml.id ts["id"]
+  					xml.name ts["name"]
+  				}
+  			end
+  		}
+  	end
+  	File.open("lib/xml/testsuites.xml", "w+") do |file|
+  		file << builder.to_xml
+  	end
   end
 
-  def read_testsuites
-  	@big_id = 1
 
-  	doc = File.open("lib/xml/testsuites.xml") { |f| Nokogiri::XML(f)}
-	 	@testsuites = []
-	 	doc.xpath('//action').each do |action|
-	 	object = {}
-	 	@big_id = @big_id > object["id"].to_i ? @big_id : object["id"].to_i
-	 	object["id"] = action.at_xpath("id").text
-	 	object["name"] = action.at_xpath("name").text
-	 	@testsuites << object
-  end
+  def find_testsuit
+  	@test_suit = {}
 
-  def destroy
-    @user = User.find(params[:id])
-  end
-   def write_xml 
-    builder = Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
-      xml.testsuites{
-        @testsuites.each do |ts|
-          xml.action{
-            xml.id ts["id"]
-            xml.name ts["name"]
-          }
-        end
-      }
-    end
-    File.open("lib/xml/testsuites.xml", "w+") do |file|
-      file << builder.to_xml
-    end
+  	@testsuites.each do |ts|
+  		if ts["id"] == params[:id]
+
+  			@test_suit = ts
+  			# debugger
+  		end
+  	end
+  	redirect_to testsuites_path if @test_suit.blank?
   end
 end
