@@ -18,6 +18,7 @@ gem 'jquery-rails'
 
 gem "select2-rails"
 
+gem 'git', '~> 1.5'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
